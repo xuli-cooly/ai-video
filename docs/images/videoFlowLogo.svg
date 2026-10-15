@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="VideoFlow">
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#111c3d"/>
+      <stop offset="1" stop-color="#20254f"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#30dfd2"/>
+      <stop offset=".52" stop-color="#55a8ff"/>
+      <stop offset="1" stop-color="#a573ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#surface)"/>
+  <path d="M16 20c7-5 17-5 25 0l8 5c5 3 5 11 0 14l-8 5c-8 5-18 5-25 0" fill="none" stroke="url(#flow)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M26 23.5c0-1.7 1.8-2.8 3.2-2l16 9.5a2.3 2.3 0 0 1 0 4l-16 9.5c-1.4.8-3.2-.3-3.2-2z" fill="url(#flow)"/>
+  <path d="m31 28 8 4-8 4z" fill="#fff"/>
+  <circle cx="16" cy="32" r="3" fill="#30dfd2"/>
+</svg>

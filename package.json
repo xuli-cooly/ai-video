@@ -1,0 +1,51 @@
+{
+  "name": "videoflow",
+  "description": "VideoFlow 是一款 AI 短剧漫剧工具，能够利用 AI 技术将小说自动转化为剧本，并结合 AI 生成的图片和视频，实现高效的短剧创作。",
+  "license": "MIT",
+  "homepage": "https://github.com/xuli-cooly/ai-video#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuli-cooly/ai-video.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xuli-cooly/ai-video/issues"
+  },
+  "type": "module",
+  "packageManager": "bun@1.3.14",
+  "patchedDependencies": {
+    "@vue-flow/core@1.48.2": "patches/vueFlowCore.patch"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/server",
+    "packages/*",
+    "packages/nodes/*",
+    "packages/tools/*",
+    "packages/teams/*",
+    "packages/ext/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter '@videoflow/web' --filter '@videoflow/server' dev",
+    "dev:web": "bun run --filter '@videoflow/web' dev",
+    "dev:server": "bun run --filter '@videoflow/server' dev",
+    "dev:plugins": "NODE_ENV=dev bun run --filter './packages/tools/*' --filter './packages/nodes/*' --filter './packages/ext/*' build",
+    "start:server": "bun run --cwd apps/server start",
+    "build:server": "bun apps/server/scripts/buildStandalone.ts",
+    "build": "bun run build:tools && bun run build:ext && bun run --filter '@videoflow/web' --filter '@videoflow/server' build",
+    "build:nodes": "bun -e \"import { rmSync } from '@videoflow/file'; import { resolve } from 'node:path'; rmSync(resolve('build/nodes'), { recursive: true, force: true });\" && NODE_ENV=production bun run --filter './packages/nodes/*' build",
+    "create:ext": "bun packages/extScaffold/create.ts",
+    "build:ext": "bun -e \"import { rmSync } from '@videoflow/file'; import { resolve } from 'node:path'; rmSync(resolve('build/ext'), { recursive: true, force: true });\" && NODE_ENV=production bun run --filter './packages/ext/*' build",
+    "build:mcp": "bun run --filter '@videoflow/mcp' build",
+    "build:teams": "NODE_ENV=production bun run --filter './packages/teams/*' build",
+    "typecheck": "bun run --filter '@videoflow/*' typecheck",
+    "build:tools": "bun -e \"import { rmSync } from '@videoflow/file'; import { resolve } from 'node:path'; rmSync(resolve('build/tools'), { recursive: true, force: true });\" && NODE_ENV=production bun run --filter './packages/tools/*' build"
+  },
+  "devDependencies": {
+    "@videoflow/file": "workspace:*",
+    "@types/bun": "^1.4.2",
+    "@types/postcss-pxtorem": "^6.1.0",
+    "postcss": "^8.5.28",
+    "postcss-pxtorem": "^6.1.0",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@videoflow/team-storyboard",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "bun build.ts", "typecheck": "tsc" },
+  "devDependencies": { "@videoflow/teams-scaffold": "workspace:*" }
+}
